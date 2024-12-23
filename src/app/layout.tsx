@@ -54,7 +54,7 @@ export const metadata: Metadata = {
         images: 'https://myownbrain.github.io/OpenGraph-Image.png',
         title: 'MyOwnBrain',
     },
-    verification: {google: '6rUVF_eIoMeoUxOF-FCmO3yleYpjzY4dx9GKNo4L5AI'},
+    verification: {google: 'jOsKwkiNmQkFXRpdjEIXvnmpkf4RYscmZvpDdJqe6d8'},
 };
 
 export default function RootLayout({
