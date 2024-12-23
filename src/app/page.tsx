@@ -1,101 +1,82 @@
-import Image from "next/image";
+'use client';
+
+import Image from 'next/image';
+import {motion} from 'framer-motion';
+import GradualSpacing from '@/components/ui/gradual-spacing';
+import {TbCode, TbDeviceGamepad2, TbExternalLink, TbMusic} from 'react-icons/tb';
+import ReactLenis from 'lenis/react';
+import HobbyPanel from '@/components/hobby-panel';
+
+const MotionImage = motion.create(Image);
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+    return (
+        <ReactLenis root>
+            <motion.header
+                className='h-screen flex flex-col lg:flex-row justify-center items-center gap-6 lg:gap-8'
+                initial={{opacity: 0, filter: 'blur(1rem)'}}
+                animate={{opacity: 1, filter: 'blur(0)'}}
+                transition={{duration: 1}}
+            >
+                <div style={{perspective: '1000px'}} className='relative z-10'>
+                    <MotionImage
+                        src='/myownbrain.svg'
+                        alt='MyOwnBrain Logo'
+                        width={320}
+                        height={320}
+                        className='border rounded-[4rem] w-64 lg:w-80'
+                        initial={{rotateX: 0, rotateY: 0, rotateZ: 0, scale: 1, y: 0, boxShadow: '0 0.5rem 2rem #040404A0'}}
+                        whileHover={{rotateX: 10, rotateY: 10, rotateZ: -10, scale: 1.2, y: 32, boxShadow: '0 1rem 4rem #04040480'}}
+                        transition={{ease: 'easeInOut', duration: 0.4}}
+                    />
+                </div>
+                <h1 className='flex flex-col justify-center items-center lg:items-start gap-4'>
+                    <div className='drop-shadow-[0_0_4rem_#FAFAFA] *:justify-start'>
+                        <GradualSpacing text='MyOwnBrain' className='text-5xl md:text-7xl lg:text-8xl font-bold -tracking-wider' />
+                    </div>
+                    <div className='flex flex-col text-3xl md:text-5xl lg:text-6xl font-medium *:justify-start'>
+                        <GradualSpacing text='Musician & Developer' className='-tracking-widest' />
+                        <GradualSpacing text='trapped in one Person' className='-tracking-widest' />
+                    </div>
+                </h1>
+            </motion.header>
+            <main className='w-full *:h-screen *:w-full'>
+                <section className='flex flex-col justify-center items-center gap-8 lg:gap-24'>
+                    <h2 className='flex items-center gap-3 font-semibold text-2xl leading-none'>
+                        <div className='size-3 bg-neutral-50 shadow-[0_0_1rem_#FAFAFA,_0_0_2rem_#FAFAFA] rounded-full' />
+                        Hobbies
+                    </h2>
+                    <div style={{perspective: '1000px'}} className='flex flex-wrap justify-center gap-4 lg:gap-8 xl:gap-16 h-max w-full'>
+                        <HobbyPanel Icon={TbDeviceGamepad2} title='Gaming'>
+                            <li>Minecraft</li>
+                            <li>Delta Force</li>
+                            <li>Rocket League</li>
+                            <li>Euro Truck Simulator 2</li>
+                            <li>Trackmania 2020</li>
+                        </HobbyPanel>
+                        <HobbyPanel Icon={TbMusic} title='Music'>
+                            <li>playing Piano, Organ</li>
+                            <li>producing my own tracks</li>
+                        </HobbyPanel>
+                        <HobbyPanel Icon={TbCode} title='Coding'>
+                            <li>WebDev</li>
+                            <li>mainly Next.js projects</li>
+                            <li>
+                                one Minecraft Java Mod named{' '}
+                                <a
+                                    href='https://modrinth.com/mod/auto-logout'
+                                    target='_blank'
+                                    className='underline underline-offset-4 font-semibold inline-flex items-center gap-1 hover:drop-shadow-[0_0_0.75rem_#FAFAFA] transition'
+                                >
+                                    Auto Logout
+                                    <TbExternalLink className='align-middle' />
+                                </a>
+                            </li>
+                            <li>also know some Python</li>
+                        </HobbyPanel>
+                    </div>
+                </section>
+            </main>
+        </ReactLenis>
+    );
 }

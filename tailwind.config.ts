@@ -1,18 +1,143 @@
-import type { Config } from "tailwindcss";
+import type {Config} from 'tailwindcss';
+import tailwindcssAnimate from 'tailwindcss-animate';
+
 
 export default {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  theme: {
-    extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
+    darkMode: ['class'],
+    content: ['./src/pages/**/*.{js,ts,jsx,tsx,mdx}', './src/components/**/*.{js,ts,jsx,tsx,mdx}', './src/app/**/*.{js,ts,jsx,tsx,mdx}'],
+    theme: {
+        extend: {
+            colors: {
+                background: 'hsl(var(--background))',
+                foreground: 'hsl(var(--foreground))',
+                card: {
+                    DEFAULT: 'hsl(var(--card))',
+                    foreground: 'hsl(var(--card-foreground))',
+                },
+                popover: {
+                    DEFAULT: 'hsl(var(--popover))',
+                    foreground: 'hsl(var(--popover-foreground))',
+                },
+                primary: {
+                    DEFAULT: 'hsl(var(--primary))',
+                    foreground: 'hsl(var(--primary-foreground))',
+                },
+                secondary: {
+                    DEFAULT: 'hsl(var(--secondary))',
+                    foreground: 'hsl(var(--secondary-foreground))',
+                },
+                muted: {
+                    DEFAULT: 'hsl(var(--muted))',
+                    foreground: 'hsl(var(--muted-foreground))',
+                },
+                accent: {
+                    DEFAULT: 'hsl(var(--accent))',
+                    foreground: 'hsl(var(--accent-foreground))',
+                },
+                destructive: {
+                    DEFAULT: 'hsl(var(--destructive))',
+                    foreground: 'hsl(var(--destructive-foreground))',
+                },
+                border: 'hsl(var(--border))',
+                input: 'hsl(var(--input))',
+                ring: 'hsl(var(--ring))',
+                chart: {
+                    '1': 'hsl(var(--chart-1))',
+                    '2': 'hsl(var(--chart-2))',
+                    '3': 'hsl(var(--chart-3))',
+                    '4': 'hsl(var(--chart-4))',
+                    '5': 'hsl(var(--chart-5))',
+                },
+                red: {
+                    '50': '#ffeef1',
+                    '100': '#ffd9e1',
+                    '200': '#ffb8c8',
+                    '300': '#ff87a1',
+                    '400': '#ff436c',
+                    '500': '#ff0037',
+                    '600': '#e00031',
+                    '700': '#bd0029',
+                    '800': '#9c0325',
+                    '900': '#800923',
+                    '950': '#46000f',
+                },
+                orange: {
+                    '50': '#fff5ed',
+                    '100': '#ffe8d4',
+                    '200': '#ffcda8',
+                    '300': '#ffa970',
+                    '400': '#ff7937',
+                    '500': '#ff5e1c',
+                    '600': '#f03a06',
+                    '700': '#c72807',
+                    '800': '#9e210e',
+                    '900': '#7f1f0f',
+                    '950': '#450b05',
+                },
+                yellow: {
+                    '50': '#fffeea',
+                    '100': '#fffac5',
+                    '200': '#fff685',
+                    '300': '#ffea46',
+                    '400': '#ffdb1b',
+                    '500': '#ffbb00',
+                    '600': '#e29000',
+                    '700': '#bb6502',
+                    '800': '#984e08',
+                    '900': '#7c400b',
+                    '950': '#482100',
+                },
+                green: {
+                    '50': '#f5fcf8',
+                    '100': '#e7f9ee',
+                    '200': '#d2f2e0',
+                    '300': '#b5e6cd',
+                    '400': '#99d6b9',
+                    '500': '#4ad295',
+                    '600': '#22b979',
+                    '700': '#1b9463',
+                    '800': '#1a7551',
+                    '900': '#166043',
+                    '950': '#0a3727',
+                },
+                blue: {
+                    '50': '#e9f3fe',
+                    '100': '#cee2fd',
+                    '200': '#a8cffb',
+                    '300': '#6bb1f8',
+                    '400': '#2586f5',
+                    '500': '#0954cd',
+                    '600': '#083ebd',
+                    '700': '#0830b0',
+                    '800': '#0d2993',
+                    '900': '#10266d',
+                    '950': '#0e1942',
+                },
+                purple: {
+                    '50': '#faf6fd',
+                    '100': '#f3e9fc',
+                    '200': '#e8d7f9',
+                    '300': '#d6b6f4',
+                    '400': '#be88ec',
+                    '500': '#9d4edd',
+                    '600': '#8f3ecf',
+                    '700': '#7433a5',
+                    '800': '#622e87',
+                    '900': '#4f276b',
+                    '950': '#361150',
+                },
+            },
+            borderRadius: {
+                lg: 'var(--radius)',
+                md: 'calc(var(--radius) - 2px)',
+                sm: 'calc(var(--radius) - 4px)',
+            },
+            fontFamily: {
+                sans: ['var(--font-geist-sans)'],
+                mono: ['var(--font-geist-mono)'],
+                pjs: ['var(--font-plus-jakarta-sans)'],
+            },
+        },
     },
-  },
-  plugins: [],
+    plugins: [tailwindcssAnimate],
 } satisfies Config;

@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes snow_fall_0 {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+
+    25% {
+        transform: translate(1vw, 50px);
+    }
+    50% {
+        transform: translate(3vw, 100px);
+    }
+    75% {
+        transform: translate(6vw, 150px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(10vw, 200px) scale(0.3);
+    }
+}
+
+@keyframes snow_fall_1 {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-3vw, 200px) scale(0.3);
+    }
+}
+
+@keyframes snow_fall_2 {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(0, 200px) scale(0.3);
+    }
+}
+
+@keyframes snow_fall_3 {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(7vw, 200px) scale(0.3);
+    }
+}
