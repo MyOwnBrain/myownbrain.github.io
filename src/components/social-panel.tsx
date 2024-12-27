@@ -19,6 +19,7 @@ export default function SocialPanel({
     return (
         <motion.a
             href={url}
+            target='_blank'
             className='relative flex sm:flex-col p-4 lg:p-6 xl:p-8 gap-4 rounded-[2rem] border sm:max-w-64 xl:max-w-72 w-full mx-4 sm:mx-0 bg-neutral-950'
             initial={{opacity: 0, filter: 'blur(2rem)'}}
             whileInView={{opacity: 1, filter: 'blur(0rem)'}}
