@@ -67,7 +67,7 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} ${plusJakartaSans.variable} font-pjs antialiased`}
                 style={{
-                    background: 'radial-gradient(circle at 50% 10vh, #262626, #040404 60%) #040404',
+                    background: 'radial-gradient(circle at 50% 10vh, #262626, #040404 50%) #040404',
                 }}
             >
                 <ThemeProvider attribute='class' defaultTheme='dark' disableTransitionOnChange>

@@ -3,9 +3,10 @@
 import Image from 'next/image';
 import {motion} from 'framer-motion';
 import GradualSpacing from '@/components/ui/gradual-spacing';
-import {TbCode, TbDeviceGamepad2, TbExternalLink, TbMusic} from 'react-icons/tb';
+import {TbBrandGithub, TbBrandInstagram, TbBrandTiktok, TbBrandTwitch, TbCode, TbDeviceGamepad2, TbExternalLink, TbMusic} from 'react-icons/tb';
 import ReactLenis from 'lenis/react';
 import HobbyPanel from '@/components/hobby-panel';
+import SocialPanel from '@/components/social-panel';
 
 const MotionImage = motion.create(Image);
 
@@ -41,12 +42,12 @@ export default function Home() {
                 </h1>
             </motion.header>
             <main className='w-full *:h-screen *:w-full'>
-                <section className='flex flex-col justify-center items-center gap-8 lg:gap-24'>
+                <section className='flex flex-col justify-center items-center gap-8 lg:gap-24' id='hobbies'>
                     <h2 className='flex items-center gap-3 font-semibold text-2xl leading-none'>
                         <div className='size-3 bg-neutral-50 shadow-[0_0_1rem_#FAFAFA,_0_0_2rem_#FAFAFA] rounded-full' />
                         Hobbies
                     </h2>
-                    <div style={{perspective: '1000px'}} className='flex flex-wrap justify-center gap-4 lg:gap-8 xl:gap-16 h-max w-full'>
+                    <div className='flex flex-wrap justify-center gap-4 lg:gap-8 xl:gap-16 h-max w-full'>
                         <HobbyPanel Icon={TbDeviceGamepad2} title='Gaming'>
                             <li>Minecraft</li>
                             <li>Delta Force</li>
@@ -74,6 +75,46 @@ export default function Home() {
                             </li>
                             <li>also know some Python</li>
                         </HobbyPanel>
+                    </div>
+                </section>
+                <section className='flex flex-col justify-center items-center gap-8 lg:gap-24' id='socials'>
+                    <h2 className='flex items-center gap-3 font-semibold text-2xl leading-none'>
+                        <div className='size-3 bg-neutral-50 shadow-[0_0_1rem_#FAFAFA,_0_0_2rem_#FAFAFA] rounded-full' />
+                        Socials
+                    </h2>
+                    <div className='flex flex-wrap justify-center gap-4 lg:gap-8 2xl:gap-16 h-max w-full'>
+                        <SocialPanel
+                            Icon={TbBrandInstagram}
+                            title='Instagram'
+                            username='piano.niklas'
+                            url='https://www.instagram.com/piano.niklas/'
+                            description='music & photographie'
+                            background='linear-gradient(to top right, #FFC933, #FF335F, #9D4EDD), radial-gradient(circle at top right, #FF0037 0%, #FF003700 80%)'
+                        />
+                        <SocialPanel
+                            Icon={TbBrandTiktok}
+                            title='TikTok'
+                            username='myownbrain37'
+                            url='https://www.tiktok.com/@myownbrain37'
+                            description='music & coding'
+                            background='radial-gradient(circle at top left, #22D3EE 0%, #22D3EE00 80%), radial-gradient(circle at top right, #FF0037 0%, #FF003700 80%)'
+                        />
+                        <SocialPanel
+                            Icon={TbBrandTwitch}
+                            title='Twitch'
+                            username='myownbrain'
+                            url='https://www.twitch.tv/myownbrain'
+                            description='occasionally streaming' 
+                            background='radial-gradient(circle at center, #F970ff, #9D4EDDD0)'
+                        />
+                        <SocialPanel
+                            Icon={TbBrandGithub}
+                            title='GitHub'
+                            username='myownbrain'
+                            url='https://github.com/MyOwnBrain'
+                            description='my coding stuff' 
+                            background='radial-gradient(circle at center, #FAFAFA, #404040)'
+                        />
                     </div>
                 </section>
             </main>

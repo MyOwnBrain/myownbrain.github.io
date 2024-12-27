@@ -40,9 +40,20 @@ export function Navbar() {
                 animate={{opacity: 1, y: 0, filter: 'blur(0)'}}
                 transition={{duration: 0.5}}
             >
-                <Link href='/' className='flex items-center gap-1 w-max'>
-                    <h1 className='font-medium text-xl drop-shadow-[0_0.25rem_0.5rem_#04040480]'>MyOwnBrain</h1>
-                </Link>
+                <div className='flex gap-2 items-center'>
+                    <Link
+                        href='#hobbies'
+                        className='group flex items-center gap-1 w-max font-medium text-lg hover:bg-neutral-500/10 leading-none px-3 py-2 rounded-xl transition'
+                    >
+                        <span className='group-hover:drop-shadow-[0_0_0.75rem_#FAFAFA]'>Hobbies</span>
+                    </Link>
+                    <Link
+                        href='#socials'
+                        className='group flex items-center gap-1 w-max font-medium text-lg hover:bg-neutral-500/10 leading-none px-3 py-2 rounded-xl transition'
+                    >
+                        <span className='group-hover:drop-shadow-[0_0_0.75rem_#FAFAFA]'>Socials</span>
+                    </Link>
+                </div>
                 <div className='flex items-center gap-2 justify-center rounded-full'>
                     <span className='inline-flex items-center gap-1'>
                         Contact

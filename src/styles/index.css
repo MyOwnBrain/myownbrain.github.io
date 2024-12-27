@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+body::-webkit-scrollbar {
+    @apply w-3;
+}
+
+body::-webkit-scrollbar-track {
+    @apply bg-[#040404];
+}
+
+body::-webkit-scrollbar-thumb {
+    @apply rounded-full border-4 border-[#040404] border-solid bg-neutral-800;
+}
+
 @keyframes snow_fall_0 {
     0% {
         opacity: 1;
@@ -58,4 +70,14 @@
         opacity: 0;
         transform: translate(7vw, 200px) scale(0.3);
     }
+}
+
+.glow-effect::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: inherit;
+    filter: blur(2rem);
+    z-index: -1;
 }
