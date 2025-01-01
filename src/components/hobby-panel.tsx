@@ -22,7 +22,7 @@ export default function HobbyPanel({Icon, title, children}: {Icon: IconType; tit
                 <h2 className='font-bold uppercase text-xl tracking-widest'>{title}</h2>
                 <ul className='list-["•"] ml-2 *:pl-2'>{children}</ul>
             </div>
-            <div className='pointer-events-none w-4/5 sm:w-40 lg:w-48 xl:w-56 h-[1px] absolute left-1/2 -translate-x-1/2 -bottom-[2px] bg-neutral-50 shadow-[0_0_1rem_#FAFAFA,_0_0_2rem_#FAFAFA]' />
+            <div className='pointer-events-none w-4/5 sm:w-40 lg:w-48 xl:w-56 h-[1px] absolute left-1/2 -translate-x-1/2 -bottom-[1px] bg-neutral-50 shadow-[0_0_1rem_#FAFAFA,_0_0_2rem_#FAFAFA]' />
             <div className='pointer-events-none w-4/5 sm:w-40 lg:w-48 xl:w-56 h-1 absolute left-1/2 -translate-x-1/2 -bottom-[2px] bg-neutral-50 blur-lg' />
         </motion.div>
     );

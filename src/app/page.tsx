@@ -7,10 +7,29 @@ import {TbBrandGithub, TbBrandInstagram, TbBrandTiktok, TbBrandTwitch, TbCode, T
 import ReactLenis from 'lenis/react';
 import HobbyPanel from '@/components/hobby-panel';
 import SocialPanel from '@/components/social-panel';
+import {Fireworks, FireworksHandlers} from '@fireworks-js/react';
+import { useEffect, useRef } from 'react';
 
 const MotionImage = motion.create(Image);
 
 export default function Home() {
+    const fireworksRef = useRef<FireworksHandlers>(null);
+
+    const toggle = () => {
+        if (!fireworksRef.current) return;
+        if (fireworksRef.current.isRunning) {
+            fireworksRef.current.waitStop();
+        } else {
+            fireworksRef.current.start();
+        }
+    };
+
+    useEffect(() => {
+        setTimeout(() => {
+            toggle();
+        }, 3000);
+    }, []);
+
     return (
         <ReactLenis root>
             <motion.header
@@ -104,7 +123,7 @@ export default function Home() {
                             title='Twitch'
                             username='myownbrain'
                             url='https://www.twitch.tv/myownbrain'
-                            description='occasionally streaming' 
+                            description='occasionally streaming'
                             background='radial-gradient(circle at center, #F970ff, #9D4EDDD0)'
                         />
                         <SocialPanel
@@ -112,12 +131,13 @@ export default function Home() {
                             title='GitHub'
                             username='myownbrain'
                             url='https://github.com/MyOwnBrain'
-                            description='my coding stuff' 
+                            description='my coding stuff'
                             background='radial-gradient(circle at center, #FAFAFA, #404040)'
                         />
                     </div>
                 </section>
             </main>
+            <Fireworks ref={fireworksRef} className='fixed top-[20vh] left-0 w-full h-[80vh] z-0 pointer-events-none' options={{traceSpeed: 8}} />
         </ReactLenis>
     );
 }
