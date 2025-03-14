@@ -1,49 +1,65 @@
 'use client';
 
+import Image from 'next/image';
+import {motion} from 'framer-motion';
+import GradualSpacing from '@/components/ui/gradual-spacing';
+import {TbBrandGithub, TbBrandInstagram, TbBrandTiktok, TbBrandTwitch, TbCode, TbDeviceGamepad2, TbExternalLink, TbMusic} from 'react-icons/tb';
+import ReactLenis from 'lenis/react';
 import HobbyPanel from '@/components/hobby-panel';
 import SocialPanel from '@/components/social-panel';
-import GradualSpacing from '@/components/ui/gradual-spacing';
-import {domAnimation, LazyMotion} from 'motion/react';
-import * as m from 'motion/react-m';
-import ReactLenis from 'lenis/react';
-import Image from 'next/image';
-import {TbBrandGithub, TbBrandInstagram, TbBrandTiktok, TbBrandTwitch, TbCode, TbDeviceGamepad2, TbExternalLink, TbMusic} from 'react-icons/tb';
+import {Fireworks, FireworksHandlers} from '@fireworks-js/react';
+import { useEffect, useRef } from 'react';
 
-const MotionImage = m.create(Image);
+const MotionImage = motion.create(Image);
 
 export default function Home() {
+    const fireworksRef = useRef<FireworksHandlers>(null);
+
+    const toggle = () => {
+        if (!fireworksRef.current) return;
+        if (fireworksRef.current.isRunning) {
+            fireworksRef.current.waitStop();
+        } else {
+            fireworksRef.current.start();
+        }
+    };
+
+    useEffect(() => {
+        setTimeout(() => {
+            toggle();
+        }, 3000);
+    }, []);
+
     return (
         <ReactLenis root>
-            <LazyMotion features={domAnimation}>
-                <m.header
-                    className='h-screen flex flex-col lg:flex-row justify-center items-center gap-6 lg:gap-8'
-                    initial={{opacity: 0, filter: 'blur(1rem)'}}
-                    animate={{opacity: 1, filter: 'blur(0)'}}
-                    transition={{duration: 1}}
-                >
-                    <div style={{perspective: '1000px'}} className='relative z-10'>
-                        <MotionImage
-                            src='/myownbrain.svg'
-                            alt='MyOwnBrain Logo'
-                            width={320}
-                            height={320}
-                            className='border rounded-[4rem] w-64 lg:w-80'
-                            initial={{rotateX: 0, rotateY: 0, rotateZ: 0, scale: 1, y: 0, boxShadow: '0 0.5rem 2rem #040404A0'}}
-                            whileHover={{rotateX: 10, rotateY: 10, rotateZ: -10, scale: 1.2, y: 32, boxShadow: '0 1rem 4rem #04040480'}}
-                            transition={{ease: 'easeInOut', duration: 0.4}}
-                        />
+            <motion.header
+                className='h-screen flex flex-col lg:flex-row justify-center items-center gap-6 lg:gap-8'
+                initial={{opacity: 0, filter: 'blur(1rem)'}}
+                animate={{opacity: 1, filter: 'blur(0)'}}
+                transition={{duration: 1}}
+            >
+                <div style={{perspective: '1000px'}} className='relative z-10'>
+                    <MotionImage
+                        src='/myownbrain.svg'
+                        alt='MyOwnBrain Logo'
+                        width={320}
+                        height={320}
+                        className='border rounded-[4rem] w-64 lg:w-80'
+                        initial={{rotateX: 0, rotateY: 0, rotateZ: 0, scale: 1, y: 0, boxShadow: '0 0.5rem 2rem #040404A0'}}
+                        whileHover={{rotateX: 10, rotateY: 10, rotateZ: -10, scale: 1.2, y: 32, boxShadow: '0 1rem 4rem #04040480'}}
+                        transition={{ease: 'easeInOut', duration: 0.4}}
+                    />
+                </div>
+                <h1 className='flex flex-col justify-center items-center lg:items-start gap-4'>
+                    <div className='drop-shadow-[0_0_4rem_#FAFAFA] *:justify-start'>
+                        <GradualSpacing text='MyOwnBrain' className='text-5xl md:text-7xl lg:text-8xl font-bold -tracking-wider' />
                     </div>
-                    <h1 className='flex flex-col justify-center items-center lg:items-start gap-4'>
-                        <div className='drop-shadow-[0_0_4rem_#FAFAFA] *:justify-start'>
-                            <GradualSpacing text='MyOwnBrain' className='text-5xl md:text-7xl lg:text-8xl font-bold -tracking-wider' />
-                        </div>
-                        <div className='flex flex-col text-3xl md:text-5xl lg:text-6xl font-medium *:justify-start'>
-                            <GradualSpacing text='Musician & Developer' className='-tracking-widest' />
-                            <GradualSpacing text='trapped in one Person' className='-tracking-widest' />
-                        </div>
-                    </h1>
-                </m.header>
-            </LazyMotion>
+                    <div className='flex flex-col text-3xl md:text-5xl lg:text-6xl font-medium *:justify-start'>
+                        <GradualSpacing text='Musician & Developer' className='-tracking-widest' />
+                        <GradualSpacing text='trapped in one Person' className='-tracking-widest' />
+                    </div>
+                </h1>
+            </motion.header>
             <main className='w-full *:h-screen *:w-full'>
                 <section className='flex flex-col justify-center items-center gap-8 lg:gap-24' id='hobbies'>
                     <h2 className='flex items-center gap-3 font-semibold text-2xl leading-none'>
@@ -121,6 +137,7 @@ export default function Home() {
                     </div>
                 </section>
             </main>
+            <Fireworks ref={fireworksRef} className='fixed top-[20vh] left-0 w-full h-[80vh] z-0 pointer-events-none' options={{traceSpeed: 8}} />
         </ReactLenis>
     );
 }

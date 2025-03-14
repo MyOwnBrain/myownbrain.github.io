@@ -5,7 +5,7 @@ FROM base AS deps
 
 WORKDIR /app
 
-COPY package.json bun.lock ./
+COPY package.json bun.lockb ./
 
 RUN bun install && bun pm cache clean
 
@@ -20,13 +20,17 @@ COPY . .
 RUN bun run build
 
 
-FROM httpd:alpine AS production
+FROM base AS runner
 
-WORKDIR /
+WORKDIR /app
 
-COPY --from=builder /app/apache-config.conf /usr/local/apache2/conf/httpd.conf
-COPY --from=builder /app/out /usr/local/apache2/htdocs
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
 
-EXPOSE 80
+EXPOSE 3000
 
-CMD [ "httpd", "-D", "FOREGROUND" ]
+ENV PORT=3000
+ENV HOSTNAME='0.0.0.0'
+
+CMD ["bun", "server.js"]
