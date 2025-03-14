@@ -1,6 +1,6 @@
 'use client';
 
-import {useInView, useMotionValue, useSpring} from 'framer-motion';
+import {useInView, useMotionValue, useSpring} from 'motion/react';
 import {useEffect, useRef} from 'react';
 import {ny} from '@/lib/utils';
 
@@ -32,7 +32,7 @@ export default function NumberTicker({
 
     useEffect(
         () =>
-            springValue.on('change', (latest) => {
+            springValue.on('change', (latest: number) => {
                 if (ref.current) {
                     ref.current.textContent = Intl.NumberFormat('en-US').format(Math.round(latest));
                 }

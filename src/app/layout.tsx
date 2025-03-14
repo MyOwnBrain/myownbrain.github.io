@@ -1,6 +1,5 @@
 import type {Metadata} from 'next';
 import {Geist, Geist_Mono, Plus_Jakarta_Sans} from 'next/font/google';
-import '@/styles/index.css';
 import '@/styles/globals.css';
 import {ThemeProvider} from '@/components/theme-provider';
 import {Navbar} from '@/components/navbar';
@@ -22,7 +21,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
     title: 'MyOwnBrain',
-    description: "I'm a 17-year-old Musician & Developer from Germany. Here you cab find out about me.",
+    description: "I'm a 18-year-old Musician & Developer from Germany. Here you can find out about me.",
     keywords: ['MyOwnBrain', 'Musician', 'Developer', 'Music', 'Coding'],
     authors: [{name: 'MyOwnBrain', url: 'https://www.instagram.com/piano.niklas/'}],
     robots: {index: true, follow: true},
@@ -42,7 +41,7 @@ export const metadata: Metadata = {
         type: 'website',
         url: 'https://myownbrain.github.io/',
         title: 'MyOwnBrain',
-        description: "I'm a 17-year-old Musician & Developer from Germany. Here you cab find out about me.",
+        description: "I'm a 18-year-old Musician & Developer from Germany. Here you cab find out about me.",
         siteName: 'MyOwnBrain',
         images: [{url: 'https://myownbrain.github.io/OpenGraph-Image.png'}],
         locale: 'Germany',
@@ -50,7 +49,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         creator: '@myownbrain37',
-        description: "I'm a 17-year-old Musician & Developer from Germany. Here you cab find out about me.",
+        description: "I'm a 18-year-old Musician & Developer from Germany. Here you cab find out about me.",
         images: 'https://myownbrain.github.io/OpenGraph-Image.png',
         title: 'MyOwnBrain',
     },
@@ -65,7 +64,7 @@ export default function RootLayout({
     return (
         <html lang='en' suppressHydrationWarning>
             <body
-                className={`${geistSans.variable} ${geistMono.variable} ${plusJakartaSans.variable} font-pjs antialiased`}
+                className={`${geistSans.variable} ${geistMono.variable} ${plusJakartaSans.className} font-pjs antialiased`}
                 style={{
                     background: 'radial-gradient(circle at 50% 10vh, #262626, #040404 50%) #040404',
                 }}

@@ -1,9 +1,147 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
+@plugin 'tailwindcss-animate';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --color-background: hsl(var(--background));
+    --color-foreground: hsl(var(--foreground));
+
+    --color-card: hsl(var(--card));
+    --color-card-foreground: hsl(var(--card-foreground));
+
+    --color-popover: hsl(var(--popover));
+    --color-popover-foreground: hsl(var(--popover-foreground));
+
+    --color-primary: hsl(var(--primary));
+    --color-primary-foreground: hsl(var(--primary-foreground));
+
+    --color-secondary: hsl(var(--secondary));
+    --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+    --color-muted: hsl(var(--muted));
+    --color-muted-foreground: hsl(var(--muted-foreground));
+
+    --color-accent: hsl(var(--accent));
+    --color-accent-foreground: hsl(var(--accent-foreground));
+
+    --color-destructive: hsl(var(--destructive));
+    --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+    --color-border: hsl(var(--border));
+    --color-input: hsl(var(--input));
+    --color-ring: hsl(var(--ring));
+
+    --color-chart-1: hsl(var(--chart-1));
+    --color-chart-2: hsl(var(--chart-2));
+    --color-chart-3: hsl(var(--chart-3));
+    --color-chart-4: hsl(var(--chart-4));
+    --color-chart-5: hsl(var(--chart-5));
+
+    --color-red-50: #ffeef1;
+    --color-red-100: #ffd9e1;
+    --color-red-200: #ffb8c8;
+    --color-red-300: #ff87a1;
+    --color-red-400: #ff436c;
+    --color-red-500: #ff0037;
+    --color-red-600: #e00031;
+    --color-red-700: #bd0029;
+    --color-red-800: #9c0325;
+    --color-red-900: #800923;
+    --color-red-950: #46000f;
+
+    --color-orange-50: #fff5ed;
+    --color-orange-100: #ffe8d4;
+    --color-orange-200: #ffcda8;
+    --color-orange-300: #ffa970;
+    --color-orange-400: #ff7937;
+    --color-orange-500: #ff5e1c;
+    --color-orange-600: #f03a06;
+    --color-orange-700: #c72807;
+    --color-orange-800: #9e210e;
+    --color-orange-900: #7f1f0f;
+    --color-orange-950: #450b05;
+
+    --color-yellow-50: #fffeea;
+    --color-yellow-100: #fffac5;
+    --color-yellow-200: #fff685;
+    --color-yellow-300: #ffea46;
+    --color-yellow-400: #ffdb1b;
+    --color-yellow-500: #ffbb00;
+    --color-yellow-600: #e29000;
+    --color-yellow-700: #bb6502;
+    --color-yellow-800: #984e08;
+    --color-yellow-900: #7c400b;
+    --color-yellow-950: #482100;
+
+    --color-green-50: #f5fcf8;
+    --color-green-100: #e7f9ee;
+    --color-green-200: #d2f2e0;
+    --color-green-300: #b5e6cd;
+    --color-green-400: #99d6b9;
+    --color-green-500: #4ad295;
+    --color-green-600: #22b979;
+    --color-green-700: #1b9463;
+    --color-green-800: #1a7551;
+    --color-green-900: #166043;
+    --color-green-950: #0a3727;
+
+    --color-blue-50: #e9f3fe;
+    --color-blue-100: #cee2fd;
+    --color-blue-200: #a8cffb;
+    --color-blue-300: #6bb1f8;
+    --color-blue-400: #2586f5;
+    --color-blue-500: #0954cd;
+    --color-blue-600: #083ebd;
+    --color-blue-700: #0830b0;
+    --color-blue-800: #0d2993;
+    --color-blue-900: #10266d;
+    --color-blue-950: #0e1942;
+
+    --color-purple-50: #faf6fd;
+    --color-purple-100: #f3e9fc;
+    --color-purple-200: #e8d7f9;
+    --color-purple-300: #d6b6f4;
+    --color-purple-400: #be88ec;
+    --color-purple-500: #9d4edd;
+    --color-purple-600: #8f3ecf;
+    --color-purple-700: #7433a5;
+    --color-purple-800: #622e87;
+    --color-purple-900: #4f276b;
+    --color-purple-950: #361150;
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
+    --font-pjs: var(--font-plus-jakarta-sans);
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+@layer utilities {
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
 }
 
 @layer base {
@@ -79,4 +217,84 @@ body {
             font-size: 16px;
         }
     }
+}
+
+body::-webkit-scrollbar {
+    @apply w-3;
+}
+
+body::-webkit-scrollbar-track {
+    @apply bg-[#040404];
+}
+
+body::-webkit-scrollbar-thumb {
+    @apply rounded-full border-4 border-[#040404] border-solid bg-neutral-800;
+}
+
+@keyframes snow_fall_0 {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+
+    25% {
+        transform: translate(1vw, 50px);
+    }
+    50% {
+        transform: translate(3vw, 100px);
+    }
+    75% {
+        transform: translate(6vw, 150px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(10vw, 200px) scale(0.3);
+    }
+}
+
+@keyframes snow_fall_1 {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-3vw, 200px) scale(0.3);
+    }
+}
+
+@keyframes snow_fall_2 {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(0, 200px) scale(0.3);
+    }
+}
+
+@keyframes snow_fall_3 {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(7vw, 200px) scale(0.3);
+    }
+}
+
+.glow-effect::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: inherit;
+    filter: blur(2rem);
+    z-index: -1;
 }
