@@ -1,40 +1,14 @@
 'use client';
 
-import Link from 'next/link';
-import {TbArrowRight, TbBrandInstagram} from 'react-icons/tb';
+import {useLenis} from 'lenis/react';
 import {domAnimation, LazyMotion} from 'motion/react';
 import * as m from 'motion/react-m';
-import {randomBetween} from '@/lib/utils';
-import {useEffect, useState} from 'react';
+import Link from 'next/link';
+import {TbArrowRight, TbBrandInstagram} from 'react-icons/tb';
 import {Button} from './ui/button';
-import {useLenis} from 'lenis/react';
-
-interface Snowflake {
-    id: number;
-    animationName: string;
-    animationDuration: string;
-    animationDelay: string;
-    left: string;
-    fontSize: string;
-}
 
 export function Navbar() {
-    const [snowflakes, setSnowflakes] = useState<Snowflake[]>([]);
     const lenis = useLenis();
-
-    useEffect(() => {
-        const generateSnowflakes = (): Snowflake[] =>
-            Array.from({length: 50}, (_, i) => ({
-                id: i,
-                animationName: `snow_fall_${Math.round(randomBetween(0, 3))}`,
-                animationDuration: `${randomBetween(2, 6)}s`,
-                animationDelay: `${randomBetween(0, 8)}s`,
-                left: `${randomBetween(0, 100)}%`,
-                top: '-20px',
-                fontSize: `${Math.round(randomBetween(12, 20))}px`,
-            }));
-        setSnowflakes(generateSnowflakes());
-    }, []);
 
     return (
         <div className='w-full py-8 flex justify-center bg-linear-to-b from-[#040404]/60 to-transparent fixed top-0 z-50'>
@@ -77,15 +51,6 @@ export function Navbar() {
                     </div>
                 </m.div>
             </LazyMotion>
-            <div className='absolute w-full h-full top-0 -z-10'>
-                {snowflakes.map(({id, ...style}) => {
-                    return (
-                        <div key={id} style={style} className='absolute text-neutral-50 repeat-infinite ease-linear'>
-                            *
-                        </div>
-                    );
-                })}
-            </div>
         </div>
     );
 }
